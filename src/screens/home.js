@@ -4,7 +4,10 @@ export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Bem Vindo ao Sistema VIO</Text>
-      <Button title="Login:" onPress={() => navigation.navigate("Login")} />
+      <Button 
+        title="Login:" 
+        onPress={() => navigation.navigate("Login")} 
+      />
       <Button
         title="Cadastro:"
         onPress={() => navigation.navigate("Cadastro")}

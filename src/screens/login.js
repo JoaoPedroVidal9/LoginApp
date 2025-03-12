@@ -21,7 +21,7 @@ export default function Login({ navigation }) {
       (response) => {
         Alert.alert("Bem Vindo!", response.data.message);
         console.log(response.data.message);
-
+        navigation.navigate('Home')
       },
       (error) => {
         Alert.alert("Erro",error.response.data.error);
@@ -54,7 +54,7 @@ export default function Login({ navigation }) {
         <Text>Clique Aqui Para Login-in</Text>
       </TouchableOpacity>
 
-      <Button title='Cadastro' onPress={()=>navigation.navigate('Cadastro')}
+      <Button title='Home' onPress={()=>navigation.navigate('Home')}
       />
     </View>
   );
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
   titulo: {
     fontWeight: "bold",
     fontSize: 40,
+    textAlign:'center'
   },
   box1: {
     width: 200,

@@ -12,7 +12,11 @@ import api from "../axios/axios";
 
 export default function CadEventos({navigation}) {
   const [event, setEvent] = useState({
-// colocar os ngc
+    nome:"",
+    descricao:"",
+    data_hora:"",
+    local:"",
+    fk_id_organizador:""
   });
 
   async function handleCadEve() {
@@ -20,8 +24,10 @@ export default function CadEventos({navigation}) {
       (response) => {
         Alert.alert("Cadastro Bem Sucedido!", response.data.message);
         console.log(response.data.message);
+        navigation.navigate('Home')
       },
       (error) => {
+        console.log(error.response.error.message);
         Alert.alert("Erro,", error.response.data.error);
         console.log(error.response.error.message);
       }
@@ -33,47 +39,46 @@ export default function CadEventos({navigation}) {
       <Text style={styles.titulo}> Faça Cadastro do seu Evento:</Text>
       <TextInput
         style={styles.inputi}
-        placeholder="Digite o nome dele aqui:"
-        value={user.nome}
+        placeholder="Digite o nome do Evento aqui:"
+        value={event.nome}
         onChangeText={(value) => {
-          setUser({ ...user, name: value });
+          setEvent({ ...event, nome: value });
         }}
       />
       <TextInput
         style={styles.inputi}
-        placeholder="Digite seu CPF aqui:"
-        value={user.cpf}
+        placeholder="Digite a descrição do Evento aqui:"
+        value={event.descricao}
         onChangeText={(value) => {
-          setUser({ ...user, cpf: value });
+          setEvent({ ...event, descricao: value });
         }}
       />
       <TextInput
         style={styles.inputi}
-        placeholder="Digite seu E-mail aqui:"
-        value={user.email}
+        placeholder="Insira a data e hora do Evento aqui:"
+        value={event.data_hora}
         onChangeText={(value) => {
-          setUser({ ...user, email: value });
+          setEvent({ ...event, data_hora: value });
         }}
       />
       <TextInput
         style={styles.inputi}
-        placeholder="Insira sua data de nascimento aqui:"
-        value={user.data_nascimento}
+        placeholder="Digite o local do Evento aqui:"
+        value={event.local}
         onChangeText={(value) => {
-          setUser({ ...user, data_nascimento: value });
+          setEvent({ ...event, local: value });
         }}
       />
       <TextInput
         style={styles.inputi}
-        placeholder="Digite sua senha aqui:"
-        secureTextEntry={true}
-        value={user.password}
+        placeholder="Digite o id do organizador aqui:"
+        value={event.fk_id_organizador}
         onChangeText={(value) => {
-          setUser({ ...user, password: value });
+          setEvent({ ...event, fk_id_organizador: value });
         }}
       />
       <TouchableOpacity onPress={handleCadEve} style={styles.botao}>
-        <Text>Cadastre-o</Text>
+        <Text>Cadastre seu Evento</Text>
       </TouchableOpacity>
       <Button title='Home' onPress={()=>navigation.navigate('Home')}
       />

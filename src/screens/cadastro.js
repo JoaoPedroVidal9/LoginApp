@@ -24,6 +24,7 @@ export default function Cadastro({navigation}) {
       (response) => {
         Alert.alert("Bem Vindo!", response.data.message);
         console.log(response.data.message);
+        navigation.navigate('Home')
       },
       (error) => {
         Alert.alert("Erro,", error.response.data.error);
@@ -79,7 +80,7 @@ export default function Cadastro({navigation}) {
       <TouchableOpacity onPress={handleSignIn} style={styles.botao}>
         <Text>Cadastre-se</Text>
       </TouchableOpacity>
-      <Button title='Login' onPress={()=>navigation.navigate('Login')}
+      <Button title='Home' onPress={()=>navigation.navigate('Home')}
       />
     </View>
   );
