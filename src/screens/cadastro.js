@@ -132,12 +132,12 @@ const styles = StyleSheet.create({
       marginVertical:10
     },
     botao:{
-        borderWidth:3,
-        backgroundColor:'green',
-        width:'80%',
-        padding:10,
-        marginVertical:10
-    }
+      borderWidth:3,
+      backgroundColor:'#2196f3',
+      width:'80%',
+      padding:10,
+      marginVertical:10
+  }
   });
   
   
