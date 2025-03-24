@@ -9,12 +9,14 @@ import {
   Button,
 } from "react-native";
 import api from "../axios/axios";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Login({ navigation }) {
   const [user, setUser] = useState({
     email: "",
     password: "",
-  });
+    showPassword:true,
+    });
 
   async function handleLogin() {
     await api.postLogin(user).then(
@@ -41,15 +43,20 @@ export default function Login({ navigation }) {
           setUser({ ...user, email: value });
         }}
       />
-      <TextInput
-        style={styles.inputi}
-        placeholder="Digite sua senha aqui:"
-        secureTextEntry={true}
-        value={user.password}
-        onChangeText={(value) => {
-          setUser({ ...user, password: value });
-        }}
-      />
+      <View style={styles.passCont}>
+        <TextInput
+        style={styles.passwordInput}
+          placeholder="Digite sua senha aqui:"
+          secureTextEntry={user.showPassword?true:false}
+          value={user.password}
+          onChangeText={(value) => {
+            setUser({ ...user, password: value });
+          }}
+        />
+        <TouchableOpacity onPress={()=> setUser({...user, showPassword : !user.showPassword})}>
+        <Ionicons  name={user.showPassword?"eye":"eye-off"} size={24} color="black" />
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity onPress={handleLogin} style={styles.botao}>
         <Text>Clique Aqui Para Login-in</Text>
       </TouchableOpacity>
@@ -102,11 +109,10 @@ const styles = StyleSheet.create({
     fontSize:30
   },
   inputi:{
-    borderWidth:3,
-    borderColor:'black',
     width:'80%',
     padding:10,
-    marginVertical:10
+    marginVertical:10,
+    borderBottomWidth:1,
   },
   botao:{
     borderWidth:3,
@@ -114,5 +120,17 @@ const styles = StyleSheet.create({
     width:'80%',
     padding:10,
     marginVertical:10
-}
+},
+  passCont:{
+    flexDirection:'row',
+    alignItems:"center",
+    width:"80%",
+    paddingRight:"10px",
+    borderBottomWidth:1,
+  },
+  passwordInput:{
+    flex:1,
+    height:40,
+    
+  }
 });
