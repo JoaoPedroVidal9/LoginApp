@@ -9,9 +9,11 @@ import {
   Button,
 } from "react-native";
 import api from "../axios/axios";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Cadastro({navigation}) {
-  const [user, setUser] = useState({
+export default function Cadastro() {
+  const navigation = useNavigation();
+    const [user, setUser] = useState({
     name: "",
     cpf: "",
     data_nascimento: "",

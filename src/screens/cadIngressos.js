@@ -9,9 +9,11 @@ import {
   Button,
 } from "react-native";
 import api from "../axios/axios";
+import { useNavigation } from "@react-navigation/native";
 
-export default function CadIngressos({navigation}) {
-  const [ingresso, setIngresso] = useState({
+export default function CadIngressos() {
+  const navigation = useNavigation();
+    const [ingresso, setIngresso] = useState({
     preco:"",
     tipo:"",
     fk_id_evento:""

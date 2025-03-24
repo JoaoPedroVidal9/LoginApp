@@ -1,3 +1,4 @@
+import Layout from "./components/Layout";
 import Login from "./screens/login";
 import Cad from "./screens/cadastro";
 import CadEve from "./screens/cadEventos";
@@ -12,9 +13,13 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Cadastro" component={Cad} />
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Screen name="Login" component={()=>(
+          <Layout><Login /></Layout>
+        )} />
+        <Stack.Screen name="Cadastro" component={()=>(
+          <Layout><Cad /></Layout>
+        )} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="CadEventos" component={CadEve} />
         <Stack.Screen name="CadIngressos" component={CadIngr} />

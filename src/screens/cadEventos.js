@@ -9,9 +9,11 @@ import {
   Button,
 } from "react-native";
 import api from "../axios/axios";
+import { useNavigation } from "@react-navigation/native";
 
-export default function CadEventos({navigation}) {
-  const [event, setEvent] = useState({
+export default function CadEventos() {
+  const navigation = useNavigation();
+    const [event, setEvent] = useState({
     nome:"",
     descricao:"",
     data_hora:"",

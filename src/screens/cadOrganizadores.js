@@ -9,9 +9,11 @@ import {
   Button,
 } from "react-native";
 import api from "../axios/axios";
+import { useNavigation } from "@react-navigation/native";
 
-export default function CadOrganizadores({ navigation }) {
-  const [org, setOrg] = useState({
+export default function CadOrganizadores() {
+  const navigation = useNavigation();
+    const [org, setOrg] = useState({
     nome: "",
     email: "",
     senha: "",
