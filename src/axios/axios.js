@@ -8,6 +8,7 @@ const api = axios.create({
 })
 
 const sheets = {
+    getEventos:()=>api.get("evento"),
     postLogin:(user)=>api.post('user/login',user),
     postCadas:(user)=>api.post('user',user),
     postCadEve:(event)=>api.post('evento',event),

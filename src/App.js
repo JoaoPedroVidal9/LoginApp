@@ -4,6 +4,7 @@ import Cad from "./screens/cadastro";
 import CadEve from "./screens/cadEventos";
 import CadIngr from "./screens/cadIngressos";
 import CadOrg from "./screens/cadOrganizadores";
+import EventosScreen from "./screens/eventosScreen";
 import Home from "./screens/home";
 import TaskList from "./screens/TaskList";
 import TaskDetail from "./screens/TaskDetail";
@@ -16,14 +17,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen name="TaskList" component={TaskList} />
-        <Stack.Screen name="TaskDetail" component={TaskDetail} />
+        {/* <Stack.Screen name="TaskList" component={TaskList} />
+        <Stack.Screen name="TaskDetail" component={TaskDetail} /> */}
         <Stack.Screen name="Login" component={()=>(
           <Layout><Login /></Layout>
         )} />
         <Stack.Screen name="Cadastro" component={()=>(
           <Layout><Cad /></Layout>
         )} />
+        <Stack.Screen name="EventosScreen" component={EventosScreen}/>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="CadEventos" component={CadEve} />
         <Stack.Screen name="CadIngressos" component={CadIngr} />
