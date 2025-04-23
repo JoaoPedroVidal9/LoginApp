@@ -4,7 +4,7 @@ import Cad from "./screens/cadastro";
 import CadEve from "./screens/cadEventos";
 import CadIngr from "./screens/cadIngressos";
 import CadOrg from "./screens/cadOrganizadores";
-import EventosScreen from "./screens/eventosScreen";
+import EventosScreen from "./screens/EventosScreen";
 import Home from "./screens/home";
 import TaskList from "./screens/TaskList";
 import TaskDetail from "./screens/TaskDetail";
