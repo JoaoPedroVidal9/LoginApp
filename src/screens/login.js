@@ -11,6 +11,7 @@ import {
 import api from "../axios/axios";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -20,12 +21,17 @@ export default function Login() {
     showPassword:true,
     });
 
+    async function saveToken(token){
+      await SecureStore.setItemAsync("token", toString(token));
+      console.log(token + " tome");
+    }
+
   async function handleLogin() {
     await api.postLogin(user).then(
       (response) => {
         Alert.alert("Bem Vindo!", response.data.message);
-        console.log(response.data.message);
-        navigation.navigate('EventosScreen')
+        saveToken(response.data.token);
+        navigation.navigate('EventosScreen');
       },
       (error) => {
         Alert.alert("Erro",error.response.data.error);
