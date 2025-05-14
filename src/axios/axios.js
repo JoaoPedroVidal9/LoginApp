@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as SecureStore from "expo-secure-store";
 
 const api = axios.create({
     baseURL:"http://10.89.240.75:5000/api/v1/",
@@ -6,6 +7,15 @@ const api = axios.create({
         'accept':"application/json"
     }
 })
+
+    api.interceptors.request.use(async (config)=>{
+        const token = await SecureStore.getItemAsync("token");
+        if(token){
+            config.headers.authorization = token;
+        }
+        return config;
+    },(error) => Promise.reject(error)
+);
 
 const sheets = {
     getEventos:()=>api.get("evento"),

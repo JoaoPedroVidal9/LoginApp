@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   TextInput,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function EventosScreen() {
   const [eventos, setEventos] = useState([]);
@@ -18,9 +19,11 @@ export default function EventosScreen() {
   const [loading, setLoading] = useState(true);
   const [eventoSelecionado, setEventoSelecionado] = useState("");
 
+  const navigation = useNavigation();
+
   useEffect(() => {
     getEventos();
-  });
+  },[]);
 
   async function getEventos() {
     try {
@@ -28,7 +31,7 @@ export default function EventosScreen() {
       setEventos(response.data.eventos);
       setLoading(false);
     } catch (error) {
-      console.log(error.response.data.error);
+      console.log(error.response.data.error?error.response.data.error:error);
     }
   }
 
@@ -72,6 +75,9 @@ export default function EventosScreen() {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={()=>navigation.navigate("CadEventos")}>
+      <Text>Criar Novo Evento</Text>
+      </TouchableOpacity>
       <Text style={styles.title}>Eventos Disponíveis</Text>
       {loading ? (
         <ActivityIndicator size="large" color="#BECE18" />

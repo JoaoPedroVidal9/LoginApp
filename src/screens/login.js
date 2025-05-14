@@ -22,8 +22,7 @@ export default function Login() {
     });
 
     async function saveToken(token){
-      await SecureStore.setItemAsync("token", toString(token));
-      console.log(token + " tome");
+      await SecureStore.setItemAsync("token", token);
     }
 
   async function handleLogin() {
@@ -35,7 +34,7 @@ export default function Login() {
       },
       (error) => {
         Alert.alert("Erro",error.response.data.error);
-        console.log(error.response.error.message);
+        console.log(error.response.error.message, "erro no login");
       }
     );
   }
